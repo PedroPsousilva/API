@@ -142,6 +142,8 @@ module.exports = class userController {
 
     try {
       connect.query(query, [email], (err, results) => {
+        console.log("Resultados: ", results);
+        console.log("Erros: ", err);
         if (err) {
           console.error("Erro ao executar a consulta:", err);
           return res.status(500).json({ error: "Erro interno do servidor" });
