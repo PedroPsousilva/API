@@ -185,8 +185,8 @@ module.exports = class eventoController {
 
   static async getEventosPorData7Dias(req, res) {
     const dataFiltro = new Date(req.params.data).toISOString().split("T");
-    const dataLimite = new Date(req.params.data);  
-    dataLimite.setDate(dataLimite.getDate() + 7);  
+    const dataLimite = new Date(req.params.data);
+    dataLimite.setDate(dataLimite.getDate() + 7);
     console.log("Data Fornecida:", dataFiltro[0], "\n");
     console.log("Data Limite:", dataLimite.toISOString().split("T")[0], "\n");
     const query = `SELECT * FROM evento`;
@@ -199,14 +199,18 @@ module.exports = class eventoController {
 
         const eventosSelecionados = results.filter(
           (evento) =>
-            new Date(evento.data_hora).toISOString().split("T")[0] >= dataFiltro[0] && new Date(evento.data_hora).toISOString().split("T")[0] < dataLimite.toISOString().split("T")[0]
+            new Date(evento.data_hora).toISOString().split("T")[0] >=
+              dataFiltro[0] &&
+            new Date(evento.data_hora).toISOString().split("T")[0] <
+              dataLimite.toISOString().split("T")[0]
         );
 
-        console.log(eventosSelecionados, '\n\n------------------------------------------\n\n');
+        console.log(
+          eventosSelecionados,
+          "\n\n------------------------------------------\n\n"
+        );
 
-        return res
-          .status(200)
-          .json({eventosSelecionados });
+        return res.status(200).json({ eventosSelecionados });
       });
     } catch (error) {
       console.log("Erro ao executar a querry: ", error);
