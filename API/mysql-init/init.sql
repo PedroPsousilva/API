@@ -144,7 +144,7 @@ CREATE TABLE `log_evento` (
   `mensagem` varchar(255) DEFAULT NULL,
   `data_log` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +153,7 @@ CREATE TABLE `log_evento` (
 
 LOCK TABLES `log_evento` WRITE;
 /*!40000 ALTER TABLE `log_evento` DISABLE KEYS */;
-INSERT INTO `log_evento` VALUES (1,'teste','2025-04-07 13:12:01');
+INSERT INTO `log_evento` VALUES (1,'teste','2025-04-07 13:12:01'),(2,'teste','2025-04-14 07:55:25');
 /*!40000 ALTER TABLE `log_evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'João Silva','joao.silva@example.com','senha123','16123456789','1990-01-15'),(2,'Maria Oliveira','maria.oliveira@example.com','senha123','16987654321','1985-06-23'),(3,'Carlos Pereira','carlos.pereira@example.com','senha123','16123987456','1992-11-30'),(4,'Ana Souza','ana.souza@example.com','senha123','16456123789','1987-04-18'),(5,'Pedro Costa','pedro.costa@example.com','senha123','16789123456','1995-08-22'),(6,'Laura Lima','laura.lima@example.com','senha123','16321654987','1998-09-09'),(7,'Lucas Alves','lucas.alves@example.com','senha123','16654321987','1993-12-01'),(8,'Fernanda Rocha','fernanda.rocha@example.com','senha123','16741852963','1991-07-07'),(9,'Rafael Martins','rafael.martins@example.com','senha123','16369258147','1994-03-27'),(10,'Juliana Nunes','juliana.nunes@example.com','senha123','16258147369','1986-05-15'),(11,'Paulo Araujo','paulo.araujo@example.com','senha123','16159753486','1997-10-12'),(12,'Beatriz Melo','beatriz.melo@example.com','senha123','16486159753','1990-02-28'),(13,'Renato Dias','renato.dias@example.com','senha123','16753486159','1996-11-11'),(14,'Camila Ribeiro','camila.ribeiro@example.com','senha123','16963852741','1989-08-03'),(15,'Thiago Teixeira','thiago.teixeira@example.com','senha123','16852741963','1992-12-24'),(16,'Patrícia Fernandes','patricia.fernandes@example.com','senha123','16741963852','1991-01-10'),(17,'Rodrigo Gomes','rodrigo.gomes@example.com','senha123','16963741852','1987-06-30'),(18,'Mariana Batista','mariana.batista@example.com','senha123','16147258369','1998-09-22'),(19,'Fábio Freitas','fabio.freitas@example.com','senha123','16369147258','1994-04-16'),(20,'Isabela Cardoso','isabela.cardoso@example.com','senha123','16258369147','1985-11-08'),(22,'Teste0','teste@example.com','senha123','00000000000','2003-01-15'),(23,'TesteCommit','commit@example.com','senha123','00000000001','2003-01-15'),(25,'Teste Commit3','commit3@example.com','senha123','00000000003','2003-01-15');
+INSERT INTO `usuario` VALUES (1,'João Silva','joao.silva@example.com','senha123','16123456789','1990-01-15'),(2,'Maria Oliveira','maria.oliveira@example.com','senha123','16987654321','1985-06-23'),(3,'Carlos Pereira','carlos.pereira@example.com','senha123','16123987456','1992-11-30'),(4,'Ana Souza','ana.souza@example.com','senha123','16456123789','1987-04-18'),(5,'Pedro Costa','pedro.costa@example.com','senha123','16789123456','1995-08-22'),(6,'Laura Lima','laura.lima@example.com','senha123','16321654987','1998-09-09'),(7,'Lucas Alves','lucas.alves@example.com','senha123','16654321987','1993-12-01'),(8,'Fernanda Rocha','fernanda.rocha@example.com','senha123','16741852963','1991-07-07'),(9,'Rafael Martins','rafael.martins@example.com','senha123','16369258147','1994-03-27'),(10,'Juliana Nunes','juliana.nunes@example.com','senha123','16258147369','1986-05-15'),(11,'Paulo Araujo','paulo.araujo@example.com','senha123','16159753486','1997-10-12'),(12,'Beatriz Melo','beatriz.melo@example.com','senha123','16486159753','1990-02-28'),(13,'Renato Dias','renato.dias@example.com','senha123','16753486159','1996-11-11'),(14,'Camila Ribeiro','camila.ribeiro@example.com','senha123','16963852741','1989-08-03'),(15,'Thiago Teixeira','thiago.teixeira@example.com','senha123','16852741963','1992-12-24'),(16,'Patrícia Fernandes','patricia.fernandes@example.com','senha123','16741963852','1991-01-10'),(17,'Rodrigo Gomes','rodrigo.gomes@example.com','senha123','16963741852','1987-06-30'),(18,'Mariana Batista','mariana.batista@example.com','senha123','16147258369','1998-09-22'),(19,'Fábio Freitas','fabio.freitas@example.com','senha123','16369147258','1994-04-16'),(20,'Isabela Cardoso','isabela.cardoso@example.com','senha123','16258369147','1985-11-08');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,6 +252,35 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'vio_pedro'
 --
+/*!50003 DROP FUNCTION IF EXISTS `buscar_faixa_etaria` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `buscar_faixa_etaria`(pid int) RETURNS varchar(20) CHARSET utf8mb4
+    READS SQL DATA
+begin 
+    declare nascimento date;
+    declare faixa varchar(20);
+
+    select data_nascimento into nascimento
+    from usuario
+    where id_usuario = pid;
+
+    set faixa = faixa_etaria(nascimento);
+
+    return faixa;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `calcula_idade` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -270,6 +299,116 @@ begin
     set idade = timestampdiff(year, datanascimento, curdate());
     return idade ;
 end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `calcula_total_gasto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `calcula_total_gasto`(pid_usuario int) RETURNS decimal(10,2)
+    READS SQL DATA
+begin
+    declare total decimal(10,2);
+
+    -- soma o valor gasto por um usuario
+    select sum(i.preco * ic.quantidade) into total
+    from compra c
+    join ingresso_compra ic on c.id_compra = ic.fk_id_compra
+    join ingresso i on i.id_ingresso = ic.fk_id_ingresso
+    where c.fk_id_usuario = pid_usuario;
+    return ifnull (total, 0);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `faixa_etaria` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `faixa_etaria`(data_nascimento date) RETURNS varchar(20) CHARSET utf8mb4
+begin 
+    declare idade int;
+
+    -- calculo da idade com a function ja criada
+    set idade = calcula_idade(data_nascimento);
+    if idade < 18 then
+        return 'Menor de idade';
+    
+    elseif idade < 60 then
+        return 'Adulto';
+    
+    else 
+        return 'Idoso';
+    end if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `is_maior_idade` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `is_maior_idade`(data_nascimento date) RETURNS tinyint(1)
+begin
+    declare idade int;
+    
+    -- utilizando a função ja criada
+    set idade = calcula_idade(data_nascimento);
+    return idade >= 18;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `media_idade` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `media_idade`() RETURNS decimal(5,2)
+    READS SQL DATA
+begin
+    declare media decimal(5,2);
+
+    -- calculo da media de idades
+
+    -- avg calucula a media de idades
+    select avg(timestampdiff(year, data_nascimento, curdate())) into media from usuario;
+
+    return ifnull(media, 0);
+
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -316,6 +455,34 @@ begin
     return 'Log inserido com sucesso';
 
 end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `renda_total_evento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `renda_total_evento`(id_evento int) RETURNS decimal(10,2)
+begin
+        declare total decimal(10,2);
+
+        -- Calcula a renda total de um evento específico
+        select ifnull(sum(i.preco * ic.quantidade), 0)
+        into total
+        from ingresso_compra ic
+        join ingresso i on ic.fk_id_ingresso = i.id_ingresso
+        where i.fk_id_evento = id_evento;
+
+        return total;
+    end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -368,6 +535,34 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `total_ingressos_vendidos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` FUNCTION `total_ingressos_vendidos`(id_evento int) RETURNS int
+begin
+    declare total int;
+
+    -- Soma a quantidade de ingressos vendidos para um evento específico
+    select ifnull(sum(ic.quantidade), 0)
+     into total
+    from ingresso_compra ic
+    join ingresso i on ic.fk_id_ingresso = i.id_ingresso
+    where i.fk_id_evento = id_evento;
+
+    return total;    
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `registrar_presenca` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -386,6 +581,71 @@ begin
     -- Registrar presença
     insert into presenca (data_hora_checkin, fk_id_evento, fk_id_compra)
     values(now(), p_id_evento, p_id_compra);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `resumo_evento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` PROCEDURE `resumo_evento`( IN pid_evento int)
+begin
+    select 
+    e.nome as nome_evento,
+    e.data_hora as data,
+    total_ingressos_vendidos(pid_evento) as total_vendidos,
+    renda_total_evento (pid_evento) renda_total 
+    from 
+    evento e
+    where e.id_evento = pid_evento;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `resumo_usuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`alunods`@`%` PROCEDURE `resumo_usuario`(in pid int)
+begin
+    declare nome varchar(100);
+    declare email varchar(100);
+    declare totalrs decimal(10,2);
+    declare faixa varchar(20);
+
+    -- busca o nome e o email do usuario
+    select name, email into nome, email
+    from usuario u 
+    where u.id_usuario = pid;
+
+
+-- Chamada das funcoes especificas ja criadas
+    set totalrs = calcula_total_gasto(pid);
+    set faixa = buscar_faixa_etaria(pid);
+
+    -- Exibe os dados formatados
+    select nome as nome_usuario,
+            email as email_usuario,
+            totalrs as total_gasto,
+            faixa as faixa_etaria;
+
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -433,4 +693,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-07 16:12:44
+-- Dump completed on 2025-04-14 15:46:48

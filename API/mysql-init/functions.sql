@@ -94,3 +94,136 @@ end; $$
 delimiter ;
 
 select mensagem_boas_vindas("Marcos");
+
+-- ================================================
+-- 14/04
+
+-- FEITO PRA VER AS FUNCTIONS NO BCD
+select routine_name from 
+information_schema.routines 
+    where routine_type = 'FUNCTION' 
+        and routine_schema ='vio_pedro';
+
+
+-- maior idade
+-- Criar uma function que verifica se o usuario e maior de idade
+delimiter $$ 
+
+create function is_maior_idade(data_nascimento date)
+returns boolean
+not deterministic
+contains sql
+begin
+    declare idade int;
+    
+    -- utilizando a função ja criada
+    set idade = calcula_idade(data_nascimento);
+    return idade >= 18;
+end; $$
+
+delimiter ;
+
+-- categorizar usuarios por faixa etaria
+
+delimiter $$
+create function faixa_etaria(data_nascimento date)
+returns varchar(20)
+not deterministic
+contains sql
+begin 
+    declare idade int;
+
+    -- calculo da idade com a function ja criada
+    set idade = calcula_idade(data_nascimento);
+    if idade < 18 then
+        return 'Menor de idade';
+    
+    elseif idade < 60 then
+        return 'Adulto';
+    
+    else 
+        return 'Idoso';
+    end if;
+end; $$ 
+delimiter ;
+
+-- agrupar usuarios por faixa etaria
+select faixa_etaria(data_nascimento) as faixa_etaria, count(*) as quantidade from usuario
+group by faixa_etaria(data_nascimento);
+
+
+select faixa_etaria(data_nascimento) as faixa, count(*) as quantidade from usuario
+group by faixa(data_nascimento);
+
+-- identificar uma faixa etaria especifica
+select name  from usuario
+where faixa_etaria(data_nascimento) = 'Adulto';
+
+-- calcular a media de idade de usuarios cadastrados
+delimiter $$
+create function media_idade()
+returns decimal(5,2)
+not deterministic
+reads sql data
+begin
+    declare media decimal(5,2);
+
+    -- calculo da media de idades
+
+    -- avg calucula a media de idades
+    select avg(timestampdiff(year, data_nascimento, curdate())) into media from usuario;
+
+    return ifnull(media, 0);
+
+END; $$
+delimiter ;
+
+-- selecionar idade especifica
+select "A media de idade dos clientes é maior que 30" as resultado where media_idade() > 30;
+
+
+
+-- exercicio direcionado
+-- calculo do total gasto por um usuario
+delimiter $$
+create function calcula_total_gasto(pid_usuario int)
+returns decimal(10,2)
+not deterministic       
+reads sql data  
+begin
+    declare total decimal(10,2);
+
+    -- soma o valor gasto por um usuario
+    select sum(i.preco * ic.quantidade) into total
+    from compra c
+    join ingresso_compra ic on c.id_compra = ic.fk_id_compra
+    join ingresso i on i.id_ingresso = ic.id_ingresso
+    where c.fk_id_usuario = p_id_usuario;
+    return ifnull (total, 0);
+end; $$
+delimiter ;
+
+
+-- busca a faixa etaria de um usuario
+delimiter $$
+create function buscar_faixa_etaria(pid int)
+returns varchar(20)
+not deterministic
+reads sql data 
+begin 
+    declare nascimento date;
+    declare faixa varchar(20);
+
+    select data_nascimento into nascimento
+    from usuario
+    where id_usuario = pid;
+
+    set faixa = faixa_etaria(nascimento);
+
+    return faixa;
+end; $$
+delimiter ; 
+   
+
+   
+
