@@ -8,7 +8,7 @@ const ingController = require("../controllers/ingController");
 router.post("/user", userController.createUser);
 router.get("/user", userController.getAllUsers);
 router.put("/user", userController.updateUser);
-router.delete("/user/:id_usuario", userController.deleteUser);
+router.delete("/user/:id", userController.deleteUser);
 router.post("/login", userController.loginUser);
 
 router.post("/org", orgController.createOrg);
@@ -25,7 +25,9 @@ router.delete("/evento/:id_evento", eventoController.deleteEvento);
 
 router.post("/ing", ingController.createIng);
 router.get("/ing", ingController.getAllIngs);
+router.get("/ingresso/evento/:id",ingController.getByIdEvento);
 router.put("/ing", ingController.updateIng);
 router.delete("/ing/:id_ingresso", ingController.deleteIng);
+
 
 module.exports = router;
