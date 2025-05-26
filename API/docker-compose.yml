@@ -24,7 +24,7 @@ services:
       MYSQL_DATABASE: vio_pedro
     ## Mapeia a porta 3306 do container para porta 3306 da maquina
     ports:
-      - "3308:3308"
+      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./mysql-init:/docker-entrypoint-initdb.d

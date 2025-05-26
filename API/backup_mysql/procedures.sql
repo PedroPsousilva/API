@@ -21,7 +21,7 @@ values
 
 end;
 
-/ / delimiter;
+// delimiter;
 
 
 delimiter // 
