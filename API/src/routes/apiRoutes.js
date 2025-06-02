@@ -5,6 +5,7 @@ const userController = require("../controllers/userController");
 const orgController = require("../controllers/orgController");
 const eventoController = require("../controllers/eventoController");
 const ingController = require("../controllers/ingController");
+const compraController = require("../controllers/compraController");
 
 router.post("/user", userController.createUser);
 router.get("/user",verifyJWT, userController.getAllUsers);
@@ -29,6 +30,13 @@ router.get("/ing", ingController.getAllIngs);
 router.get("/ingresso/evento/:id",ingController.getByIdEvento);
 router.put("/ing", ingController.updateIng);
 router.delete("/ing/:id_ingresso", ingController.deleteIng);
+
+//Compracontroller
+router.post("/comprasimples", compraController.registrarCompraSimples);
+router.post("/compra", compraController.registrarCompra);
+
+
+
 
 
 module.exports = router;
