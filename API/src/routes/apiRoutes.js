@@ -20,6 +20,7 @@ router.put("/org", orgController.updateOrg);
 router.delete("/org/:id_organizador", orgController.deleteOrg);
 
 router.post("/evento",upload.single("imagem"), eventoController.createEvento);
+router.get("/evento/imagem/:id",eventoController.getImagemEvento)
 router.get("/evento", eventoController.getAllEventos);
 router.get("/evento/data", eventoController.getEventosPorData);
 router.get("/evento/:data", eventoController.getEventosPorData7Dias);
